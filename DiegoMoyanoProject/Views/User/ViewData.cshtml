@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@using DiegoMoyanoProject.ViewModels.User
+@model UserViewDataViewModel
+<div class="container py-5">
+    <!-- For demo purpose -->
+    <header class="text-center text-white">
+        <h1 class="display-4">Blue Cheetah</h1>
+        <p class="lead mb-0 font-italic"> Datos de Usuario</p>
+    </header>
+
+    <div class="row py-5">
+        <div class="col-lg-7 mx-auto">
+
+            <div class="card shadow mb-4">
+                <div class="card-body p-5">
+                    <h4 class="mb-4">@Model.Username</h4>
+                    <!-- Unstyled list -->
+                    <ul class="list-unstyled">
+                        <li class="mb-2 fw-bolder">Mail</li>
+                        <li class="mb-2">@Model.Mail</li>
+                        
+                        @if (@Model.IsAdminOrOwner)
+                        {
+                            <li class="mb-2"><td><button type="button" class="btn btn-success"><a class="text-decoration-none text-light" asp-controller="User" asp-action="UploadData" asp-route-id="@Model.Id">Registrar capital y rentabilidad</a></button></td></li>
+                        }
+                            <li class="mb-2"><td><button type="button" class="btn btn-success text-decoration-none"><a class="text-decoration-none text-light" asp-controller="UserData" asp-action="ViewInversion" asp-route-id="@Model.Id">Capital y Rentabilidad</a></button></td></li>
+              
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
